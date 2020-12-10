@@ -2,6 +2,8 @@ package org.monjasa.application.views;
 
 import java.util.Optional;
 
+import org.monjasa.application.views.pages.RiskEventProbabilitiesView;
+import org.monjasa.application.views.pages.RiskEventsLossView;
 import org.monjasa.application.views.pages.RiskEventsView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
@@ -78,7 +80,9 @@ public class MainView extends AppLayout {
     private Component[] createMenuItems() {
         return new Tab[]{
                 createTab("Джерела ризиків", RiskSourcesView.class),
-                createTab("Ризикові події", RiskEventsView.class)
+                createTab("Потенційні ризикові події", RiskEventsView.class),
+                createTab("Ймовірність ризикових подій", RiskEventProbabilitiesView.class),
+                createTab("Величина ризику", RiskEventsLossView.class)
         };
     }
 

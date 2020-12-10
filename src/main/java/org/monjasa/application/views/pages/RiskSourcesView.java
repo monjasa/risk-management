@@ -1,5 +1,6 @@
 package org.monjasa.application.views.pages;
 
+import com.vaadin.flow.component.html.H2;
 import org.monjasa.application.model.RiskSource;
 import org.monjasa.application.model.RiskType;
 import org.monjasa.application.views.MainView;
@@ -49,25 +50,33 @@ public class RiskSourcesView extends VerticalLayout {
         }
 
         GridPro<RiskSource> riskSourcesGrid = new GridPro<>();
+        riskSourcesGrid.addThemeName("row-stripes");
+        riskSourcesGrid.addThemeName("wrap-cell-content");
+
         riskSourcesGrid.setDataProvider(new ListDataProvider<>(riskEvents));
 
         riskSourcesGrid.addColumn(RiskSource::getRiskType, "riskType").setHeader("Тип ризиків");
-        riskSourcesGrid.addColumn(RiskSource::getName, "name").setHeader("Назва джерела");
+        riskSourcesGrid.addColumn(RiskSource::getName, "name")
+                .setFlexGrow(10)
+                .setHeader("Назва джерела");
         riskSourcesGrid.addEditColumn(RiskSource::isAssessed, new TextRenderer<>(item -> item.isAssessed() ? "Так" : "Ні"))
                 .checkbox(RiskSource::setAssessed)
                 .setComparator((o1, o2) -> Boolean.compare(o1.isAssessed(), o2.isAssessed()))
                 .setHeader("Наявність джерела");
 
         Grid<RiskSourcesSetData> riskSourceSetsGrid = new Grid<>();
-        riskSourceSetsGrid.setItems(RISK_SOURCES_SET_DATA);
+        riskSourceSetsGrid.addThemeName("row-stripes");
+        riskSourceSetsGrid.addThemeName("wrap-cell-content");
         riskSourceSetsGrid.setHeightByRows(true);
+
+        riskSourceSetsGrid.setItems(RISK_SOURCES_SET_DATA);
 
         long riskSourcesCount = riskEvents.stream().filter(RiskSource::isAssessed).count();
 
         NumberFormat percentInstance = NumberFormat.getPercentInstance(Locale.ENGLISH);
         percentInstance.setMaximumFractionDigits(2);
 
-        riskSourceSetsGrid.addColumn(RiskSourcesSetData::getRiskType).setHeader("Тип ризиків");
+        riskSourceSetsGrid.addColumn(RiskSourcesSetData::getRiskType).setHeader("Множина джерел появи ризиків");
         riskSourceSetsGrid.addColumn(RiskSourcesSetData::getAbsoluteValue)
                 .setHeader("Кількість джерел")
                 .setFooter(String.valueOf(riskSourcesCount));
@@ -75,8 +84,10 @@ public class RiskSourcesView extends VerticalLayout {
                 .setHeader("Ймовірність появи")
                 .setFooter(String.format(Locale.US, "%.2f%%", 100f * riskSourcesCount / 18));
 
-        add(new H1("Ідентифікація можливих джерел появи ризиків"));
+        add(new H1("Етап 1.1. Визначення можливих джерел появи ризиків"));
+        add(new H2("Модель можливих джерел появи ризиків розроблення ПЗ"));
         add(riskSourcesGrid);
+        add(new H2("Множини джерел появи ризиків"));
         add(riskSourceSetsGrid);
     }
 

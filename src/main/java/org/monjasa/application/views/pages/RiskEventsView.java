@@ -1,5 +1,6 @@
 package org.monjasa.application.views.pages;
 
+import com.vaadin.flow.component.html.H2;
 import org.monjasa.application.model.RiskEvent;
 import org.monjasa.application.model.RiskType;
 import org.monjasa.application.views.MainView;
@@ -15,6 +16,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import lombok.Data;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -36,38 +38,38 @@ public class RiskEventsView extends VerticalLayout {
 
         setId("risk-events-view");
 
+        List<RiskEvent> riskEvents = new ArrayList<>();
+
         ObjectMapper objectMapper = new ObjectMapper();
-        List<RiskEvent> riskEvents = new ArrayList<>(List.of(
-                new RiskEvent(RiskType.TECHNICAL, "Ризикова подія 01", true, new BigDecimal(0), new ArrayList<>(), null),
-                new RiskEvent(RiskType.TECHNICAL, "Ризикова подія 02", false, new BigDecimal(0), new ArrayList<>(), null),
-                new RiskEvent(RiskType.BUDGET, "Ризикова подія 03", true, new BigDecimal(0), new ArrayList<>(), null),
-                new RiskEvent(RiskType.SCHEDULE, "Ризикова подія 04", true, new BigDecimal(0), new ArrayList<>(), null),
-                new RiskEvent(RiskType.OPERATIONAL, "Ризикова подія 05", false, new BigDecimal(0), new ArrayList<>(), null),
-                new RiskEvent(RiskType.OPERATIONAL, "Ризикова подія 06", true, new BigDecimal(0), new ArrayList<>(), null),
-                new RiskEvent(RiskType.OPERATIONAL, "Ризикова подія 07", true, new BigDecimal(0), new ArrayList<>(), null)
-        ));
+        try {
+            riskEvents.addAll(objectMapper.readValue(
+                    RiskEventProbabilitiesView.class.getClassLoader().getResourceAsStream("data/risk-events.json"),
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, RiskEvent.class)
+            ));
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
 
-//        try {
-//            riskEvents.addAll(objectMapper.readValue(
-//                    RiskSourcesView.class.getClassLoader().getResourceAsStream("data/risk-events.json"),
-//                    objectMapper.getTypeFactory().constructCollectionType(List.class, RiskEvent.class)
-//            ));
-//        } catch (IOException exception) {
-//            exception.printStackTrace();
-//        }
+        GridPro<RiskEvent> riskEventsGrid = new GridPro<>();
+        riskEventsGrid.addThemeName("row-stripes");
+        riskEventsGrid.addThemeName("wrap-cell-content");
 
-        GridPro<RiskEvent> riskSourcesGrid = new GridPro<>();
-        riskSourcesGrid.setDataProvider(new ListDataProvider<>(riskEvents));
+        riskEventsGrid.setDataProvider(new ListDataProvider<>(riskEvents));
 
-        riskSourcesGrid.addColumn(RiskEvent::getRiskType, "riskType").setHeader("Тип ризиків");
-        riskSourcesGrid.addColumn(RiskEvent::getName, "name").setHeader("Назва події");
-        riskSourcesGrid.addEditColumn(RiskEvent::isAssessed, new TextRenderer<>(item -> item.isAssessed() ? "Так" : "Ні"))
+        riskEventsGrid.addColumn(RiskEvent::getRiskType, "riskType").setHeader("Тип ризиків");
+        riskEventsGrid.addColumn(RiskEvent::getName, "name")
+                .setFlexGrow(10)
+                .setHeader("Назва події");
+        riskEventsGrid.addEditColumn(RiskEvent::isAssessed, new TextRenderer<>(item -> item.isAssessed() ? "Так" : "Ні"))
                 .checkbox(RiskEvent::setAssessed)
                 .setComparator((o1, o2) -> Boolean.compare(o1.isAssessed(), o2.isAssessed()))
                 .setHeader("Наявність події");
 
         Grid<RiskEventsSetData> riskSourceSetsGrid = new Grid<>();
+
         riskSourceSetsGrid.setItems(riskSourceSets);
+        riskSourceSetsGrid.addThemeName("row-stripes");
+        riskSourceSetsGrid.addThemeName("wrap-cell-content");
         riskSourceSetsGrid.setHeightByRows(true);
 
         long riskSourcesCount = riskEvents.stream().filter(RiskEvent::isAssessed).count();
@@ -75,7 +77,7 @@ public class RiskEventsView extends VerticalLayout {
         NumberFormat percentInstance = NumberFormat.getPercentInstance(Locale.ENGLISH);
         percentInstance.setMaximumFractionDigits(2);
 
-        riskSourceSetsGrid.addColumn(RiskEventsSetData::getRiskType).setHeader("Тип ризиків");
+        riskSourceSetsGrid.addColumn(RiskEventsSetData::getRiskType).setHeader("Множина ризикових подій");
         riskSourceSetsGrid.addColumn(RiskEventsSetData::getAbsoluteValue)
                 .setHeader("Кількість подій")
                 .setFooter(String.valueOf(riskSourcesCount));
@@ -83,8 +85,10 @@ public class RiskEventsView extends VerticalLayout {
                 .setHeader("Ймовірність появи")
                 .setFooter(String.format(Locale.US, "%.2f%%", 100f * riskSourcesCount / 18));
 
-        add(new H1("Ідентифікація потенційних ризикових подій"));
-        add(riskSourcesGrid);
+        add(new H1("Етап 1.2. Ідентифікація потенційних ризикових подій"));
+        add(new H2("Модель ідентифікації потенційних ризикових подій"));
+        add(riskEventsGrid);
+        add(new H2("Множини настання потенційних ризикових подій"));
         add(riskSourceSetsGrid);
     }
 

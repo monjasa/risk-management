@@ -8,6 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Evaluation {
+
     private double value;
     private int weight;
+
+    public double getWeightedValue() {
+        return weight * value;
+    }
 }
