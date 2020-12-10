@@ -1,7 +1,8 @@
-package com.example.application.views.main;
+package org.monjasa.application.views;
 
 import java.util.Optional;
 
+import org.monjasa.application.views.pages.RiskEventsView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -19,10 +20,7 @@ import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.PWA;
-import com.vaadin.flow.theme.Theme;
-import com.example.application.views.main.MainView;
-import com.example.application.views.helloworld.HelloWorldView;
-import com.example.application.views.about.AboutView;
+import org.monjasa.application.views.pages.RiskSourcesView;
 
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/main-view.css")
@@ -49,7 +47,6 @@ public class MainView extends AppLayout {
         layout.add(new DrawerToggle());
         viewTitle = new H1();
         layout.add(viewTitle);
-        layout.add(new Image("images/user.svg", "Avatar"));
         return layout;
     }
 
@@ -63,8 +60,8 @@ public class MainView extends AppLayout {
         HorizontalLayout logoLayout = new HorizontalLayout();
         logoLayout.setId("logo");
         logoLayout.setAlignItems(FlexComponent.Alignment.CENTER);
-        logoLayout.add(new Image("images/logo.png", "My Project logo"));
-        logoLayout.add(new H1("My Project"));
+        logoLayout.add(new Image("images/logo.png", "Управління ризиками - логотип"));
+        logoLayout.add(new H1("Управління ризиками"));
         layout.add(logoLayout, menu);
         return layout;
     }
@@ -79,7 +76,10 @@ public class MainView extends AppLayout {
     }
 
     private Component[] createMenuItems() {
-        return new Tab[]{createTab("Hello World", HelloWorldView.class), createTab("About", AboutView.class)};
+        return new Tab[]{
+                createTab("Джерела ризиків", RiskSourcesView.class),
+                createTab("Ризикові події", RiskEventsView.class)
+        };
     }
 
     private static Tab createTab(String text, Class<? extends Component> navigationTarget) {
