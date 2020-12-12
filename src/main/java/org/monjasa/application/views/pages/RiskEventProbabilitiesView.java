@@ -1,6 +1,5 @@
 package org.monjasa.application.views.pages;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid.Column;
 import com.vaadin.flow.component.grid.HeaderRow;
@@ -8,21 +7,21 @@ import com.vaadin.flow.component.gridpro.GridPro;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.data.provider.ListDataProvider;
+import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.renderer.NumberRenderer;
-import com.vaadin.flow.function.ValueProvider;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.monjasa.application.model.RiskEvent;
 import org.monjasa.application.model.bracket.ProbabilityBracket;
+import org.monjasa.application.service.RiskEventService;
 import org.monjasa.application.views.MainView;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.IOException;
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.IntStream;
 
 @Route(value = "risk-event-probabilities", layout = MainView.class)
 @PageTitle("Ймовірності настання ризикових подій")
@@ -30,23 +29,28 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
 
     public static final int EVALUATIONS_COUNT = 5;
 
+    @SuppressWarnings("SpringJavaAutowiredMembersInspection")
+    @Autowired private RiskEventService riskEventService;
+
+    private final GridPro<RiskEvent> riskEventsGrid;
+    private final GridPro<RiskEvent> evaluationsGrid;
+
+    @PostConstruct
+    public void initializeDataProvider() {
+        riskEventsGrid.setDataProvider(DataProvider.fromCallbacks(
+                query -> {
+                    int offset = query.getOffset();
+                    int limit = query.getLimit();
+                    return riskEventService.findAssessed().stream();
+                }, query -> Math.toIntExact(riskEventService.countByPredicate(RiskEvent::isAssessed)))
+        );
+    }
+
     public RiskEventProbabilitiesView() {
 
         setId("risk-event-probabilities-view");
 
-        List<RiskEvent> riskEvents = new ArrayList<>();
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            riskEvents.addAll(objectMapper.readValue(
-                    RiskEventProbabilitiesView.class.getClassLoader().getResourceAsStream("data/risk-events.json"),
-                    objectMapper.getTypeFactory().constructCollectionType(List.class, RiskEvent.class)
-            ));
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
-
-        GridPro<RiskEvent> evaluationsGrid = new GridPro<>();
+        evaluationsGrid = new GridPro<>();
         evaluationsGrid.addThemeName("row-stripes");
         evaluationsGrid.addThemeName("wrap-cell-content");
         evaluationsGrid.setHeightByRows(true);
@@ -54,13 +58,9 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
         evaluationsGrid.addColumn(RiskEvent::getRiskType, "riskType")
                 .setHeader("Тип ризиків");
 
-        GridPro<RiskEvent> riskEventsGrid = new GridPro<>();
+        riskEventsGrid = new GridPro<>();
         riskEventsGrid.addThemeName("row-stripes");
         riskEventsGrid.addThemeName("wrap-cell-content");
-
-        ListDataProvider<RiskEvent> dataProvider = new ListDataProvider<>(riskEvents);
-        dataProvider.setFilter(RiskEvent::isAssessed);
-        riskEventsGrid.setDataProvider(dataProvider);
 
         riskEventsGrid.addColumn(RiskEvent::getRiskType, "riskType")
                 .setFlexGrow(5)
@@ -70,10 +70,14 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
                 .setHeader("Назва події");
 
         List<Column<RiskEvent>> evaluationColumns = new ArrayList<>(EVALUATIONS_COUNT);
+        List<Column<RiskEvent>> weightedEvaluationColumns = new ArrayList<>(EVALUATIONS_COUNT);
+
         for (int i = 0; i < EVALUATIONS_COUNT; i++) {
             final int index = i;
-
-            Column<RiskEvent> column = riskEventsGrid.addEditColumn(riskEvent -> riskEvent.getProbabilityEvaluations().get(index).getValue())
+            Column<RiskEvent> column = riskEventsGrid.addEditColumn(
+                    riskEvent -> riskEvent.getProbabilityEvaluations().get(index).getValue(),
+                    new NumberRenderer<>(riskEvent -> riskEvent.getProbabilityEvaluations().get(index).getValue(), "%(.2f", Locale.US)
+            )
                     .text((item, newValue) -> item.getProbabilityEvaluations().get(index).setValue(Double.parseDouble(newValue)))
                     .setTextAlign(ColumnTextAlign.CENTER)
                     .setHeader(String.format("Експерт %d", index + 1));
@@ -81,19 +85,18 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
             evaluationColumns.add(column);
         }
 
+        for (int i = 0; i < EVALUATIONS_COUNT; i++) {
+            final int index = i;
+            Column<RiskEvent> column = riskEventsGrid.addColumn(new NumberRenderer<>(riskEvent -> riskEvent.getProbabilityEvaluations().get(index).getWeightedValue(), "%(.2f", Locale.US))
+                    .setTextAlign(ColumnTextAlign.CENTER)
+                    .setHeader(String.format("Експерт %d", index + 1));
+
+            weightedEvaluationColumns.add(column);
+        }
 
         HeaderRow headerRow = riskEventsGrid.prependHeaderRow();
         headerRow.join(evaluationColumns.toArray(Column[]::new)).setText("Оцінки експертів");
-
-        Column<?>[] weightedEvaluationColumns = IntStream.range(0, EVALUATIONS_COUNT)
-                .mapToObj(i -> new NumberRenderer<RiskEvent>(riskEvent -> riskEvent.getProbabilityEvaluations().get(i).getWeightedValue(), "%(.2f", Locale.US))
-                .map(riskEventsGrid::addColumn)
-                .toArray(Column[]::new);
-
-        IntStream.range(0, EVALUATIONS_COUNT)
-                .forEach(i -> weightedEvaluationColumns[i].setTextAlign(ColumnTextAlign.CENTER).setHeader(String.format("Експерт %d", i + 1)));
-
-        headerRow.join(weightedEvaluationColumns).setText("Оцінки експертів з урахуванням вагомості");
+        headerRow.join(weightedEvaluationColumns.toArray(Column[]::new)).setText("Оцінки експертів з урахуванням вагомості");
 
         riskEventsGrid.addColumn(new NumberRenderer<>(RiskEvent::getWeightedRiskProbability, "%(.2f", Locale.US))
                 .setComparator(Comparator.comparingDouble(RiskEvent::getWeightedRiskProbability))
@@ -109,8 +112,7 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
                 .setHeader("Ймовірність виникнення");
 
         riskEventsGrid.addItemPropertyChangedListener(event -> {
-            System.out.println(riskEvents);
-            System.out.println(event);
+            riskEventService.save(event.getItem());
         });
 
         add(new H1("Етап 2.1. Визначення ймовірності настання ризикових подій"));

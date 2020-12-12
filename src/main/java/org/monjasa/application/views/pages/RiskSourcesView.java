@@ -1,37 +1,26 @@
 package org.monjasa.application.views.pages;
 
-import com.vaadin.flow.component.html.H2;
-import org.monjasa.application.model.RiskSource;
-import org.monjasa.application.model.RiskType;
-import org.monjasa.application.views.MainView;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.gridpro.GridPro;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.ListDataProvider;
-import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.data.renderer.TextRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
-import lombok.Data;
+import org.monjasa.application.model.RiskSource;
+import org.monjasa.application.views.MainView;
 
 import java.io.IOException;
-import java.text.NumberFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Route(value = "risk-sources", layout = MainView.class)
 @PageTitle("Джерела появи ризиків")
 @RouteAlias(value = "", layout = MainView.class)
 public class RiskSourcesView extends VerticalLayout {
-
-    public static final List<RiskSourcesSetData> RISK_SOURCES_SET_DATA = new ArrayList<>(List.of(
-            new RiskSourcesSetData(RiskType.TECHNICAL, 6),
-            new RiskSourcesSetData(RiskType.BUDGET, 2),
-            new RiskSourcesSetData(RiskType.SCHEDULE, 2),
-            new RiskSourcesSetData(RiskType.OPERATIONAL, 3)
-    ));
 
     public RiskSourcesView() {
 
@@ -61,46 +50,33 @@ public class RiskSourcesView extends VerticalLayout {
                 .setHeader("Назва джерела");
         riskSourcesGrid.addEditColumn(RiskSource::isAssessed, new TextRenderer<>(item -> item.isAssessed() ? "Так" : "Ні"))
                 .checkbox(RiskSource::setAssessed)
-                .setComparator((o1, o2) -> Boolean.compare(o1.isAssessed(), o2.isAssessed()))
+                .setComparator((firstRiskSource, secondRiskSource) -> Boolean.compare(firstRiskSource.isAssessed(), secondRiskSource.isAssessed()))
                 .setHeader("Наявність джерела");
 
-        Grid<RiskSourcesSetData> riskSourceSetsGrid = new Grid<>();
-        riskSourceSetsGrid.addThemeName("row-stripes");
-        riskSourceSetsGrid.addThemeName("wrap-cell-content");
-        riskSourceSetsGrid.setHeightByRows(true);
-
-        riskSourceSetsGrid.setItems(RISK_SOURCES_SET_DATA);
-
-        long riskSourcesCount = riskEvents.stream().filter(RiskSource::isAssessed).count();
-
-        NumberFormat percentInstance = NumberFormat.getPercentInstance(Locale.ENGLISH);
-        percentInstance.setMaximumFractionDigits(2);
-
-        riskSourceSetsGrid.addColumn(RiskSourcesSetData::getRiskType).setHeader("Множина джерел появи ризиків");
-        riskSourceSetsGrid.addColumn(RiskSourcesSetData::getAbsoluteValue)
-                .setHeader("Кількість джерел")
-                .setFooter(String.valueOf(riskSourcesCount));
-        riskSourceSetsGrid.addColumn(new NumberRenderer<>(RiskSourcesSetData::getRelativeValue, percentInstance))
-                .setHeader("Ймовірність появи")
-                .setFooter(String.format(Locale.US, "%.2f%%", 100f * riskSourcesCount / 18));
+//        Grid<RiskSourcesSetData> riskSourceSetsGrid = new Grid<>();
+//        riskSourceSetsGrid.addThemeName("row-stripes");
+//        riskSourceSetsGrid.addThemeName("wrap-cell-content");
+//        riskSourceSetsGrid.setHeightByRows(true);
+//
+//        riskSourceSetsGrid.setItems(RISK_SOURCES_SET_DATA);
+//
+//        long riskSourcesCount = riskEvents.stream().filter(RiskSource::isAssessed).count();
+//
+//        NumberFormat percentInstance = NumberFormat.getPercentInstance(Locale.ENGLISH);
+//        percentInstance.setMaximumFractionDigits(2);
+//
+//        riskSourceSetsGrid.addColumn(RiskSourcesSetData::getRiskType).setHeader("Множина джерел появи ризиків");
+//        riskSourceSetsGrid.addColumn(RiskSourcesSetData::getAbsoluteValue)
+//                .setHeader("Кількість джерел")
+//                .setFooter(String.valueOf(riskSourcesCount));
+//        riskSourceSetsGrid.addColumn(new NumberRenderer<>(RiskSourcesSetData::getRelativeValue, percentInstance))
+//                .setHeader("Ймовірність появи")
+//                .setFooter(String.format(Locale.US, "%.2f%%", 100f * riskSourcesCount / 18));
 
         add(new H1("Етап 1.1. Визначення можливих джерел появи ризиків"));
         add(new H2("Модель можливих джерел появи ризиків розроблення ПЗ"));
         add(riskSourcesGrid);
         add(new H2("Множини джерел появи ризиків"));
-        add(riskSourceSetsGrid);
-    }
-
-    @Data
-    private static class RiskSourcesSetData {
-        private RiskType riskType;
-        private int absoluteValue;
-        private double relativeValue;
-
-        public RiskSourcesSetData(RiskType riskType, int absoluteValue) {
-            this.riskType = riskType;
-            this.absoluteValue = absoluteValue;
-            this.relativeValue = absoluteValue / 18f;
-        }
+//        add(riskSourceSetsGrid);
     }
 }
