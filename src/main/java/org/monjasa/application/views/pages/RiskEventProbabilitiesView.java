@@ -16,12 +16,13 @@ import org.monjasa.application.model.bracket.ProbabilityBracket;
 import org.monjasa.application.service.RiskEventService;
 import org.monjasa.application.views.MainView;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
+
+import static com.vaadin.flow.data.provider.SortDirection.ASCENDING;
 
 @Route(value = "risk-event-probabilities", layout = MainView.class)
 @PageTitle("Ймовірності настання ризикових подій")
@@ -33,15 +34,20 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
     @Autowired private RiskEventService riskEventService;
 
     private final GridPro<RiskEvent> riskEventsGrid;
-    private final GridPro<RiskEvent> evaluationsGrid;
 
     @PostConstruct
     public void initializeDataProvider() {
         riskEventsGrid.setDataProvider(DataProvider.fromCallbacks(
                 query -> {
+                    Optional<Sort> sort = query.getSortOrders().stream()
+                            .map(queryOrder -> Sort.by(queryOrder.getDirection() == ASCENDING ? Direction.ASC : Direction.DESC, queryOrder.getSorted()))
+                            .findFirst();
+
                     int offset = query.getOffset();
                     int limit = query.getLimit();
-                    return riskEventService.findAssessed().stream();
+
+                    List<RiskEvent> riskEvents = sort.isPresent() ? riskEventService.findAssessed(sort.get()) : riskEventService.findAssessed();
+                    return riskEvents.stream();
                 }, query -> Math.toIntExact(riskEventService.countByPredicate(RiskEvent::isAssessed)))
         );
     }
@@ -50,22 +56,19 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
 
         setId("risk-event-probabilities-view");
 
-        evaluationsGrid = new GridPro<>();
-        evaluationsGrid.addThemeName("row-stripes");
-        evaluationsGrid.addThemeName("wrap-cell-content");
-        evaluationsGrid.setHeightByRows(true);
-
-        evaluationsGrid.addColumn(RiskEvent::getRiskType, "riskType")
-                .setHeader("Тип ризиків");
-
         riskEventsGrid = new GridPro<>();
         riskEventsGrid.addThemeName("row-stripes");
         riskEventsGrid.addThemeName("wrap-cell-content");
+        riskEventsGrid.getStyle().set("margin-bottom", "2em");
+        riskEventsGrid.setHeight("750px");
 
-        riskEventsGrid.addColumn(RiskEvent::getRiskType, "riskType")
-                .setFlexGrow(5)
+
+        riskEventsGrid.addColumn(RiskEvent::getRiskType)
+                .setSortProperty("riskType")
+                .setFlexGrow(10)
                 .setHeader("Тип ризиків");
-        riskEventsGrid.addColumn(RiskEvent::getName, "name")
+        riskEventsGrid.addColumn(RiskEvent::getName)
+                .setSortProperty("name")
                 .setFlexGrow(100)
                 .setHeader("Назва події");
 
@@ -99,13 +102,11 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
         headerRow.join(weightedEvaluationColumns.toArray(Column[]::new)).setText("Оцінки експертів з урахуванням вагомості");
 
         riskEventsGrid.addColumn(new NumberRenderer<>(RiskEvent::getWeightedRiskProbability, "%(.2f", Locale.US))
-                .setComparator(Comparator.comparingDouble(RiskEvent::getWeightedRiskProbability))
                 .setTextAlign(ColumnTextAlign.CENTER)
                 .setFlexGrow(10)
                 .setHeader("Зважена ймовірність");
 
         riskEventsGrid.addColumn(riskEvent -> ProbabilityBracket.getBracket(riskEvent.getWeightedRiskProbability()))
-                .setComparator(Comparator.comparingDouble(RiskEvent::getWeightedRiskProbability))
                 .setClassNameGenerator(riskEvent -> ProbabilityBracket.getBracket(riskEvent.getWeightedRiskProbability()).name().toLowerCase())
                 .setTextAlign(ColumnTextAlign.CENTER)
                 .setFlexGrow(10)
@@ -118,7 +119,5 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
         add(new H1("Етап 2.1. Визначення ймовірності настання ризикових подій"));
         add(new H2("Класифікація настання ризикових подій"));
         add(riskEventsGrid);
-        add(new H2("Коефіцієнти вагомості експертів для ймовірності настання ризикових подій"));
-        add(evaluationsGrid);
     }
 }

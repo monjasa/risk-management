@@ -41,6 +41,11 @@ registerStyles('vaadin-grid', css`
     [part~="header-cell"] {
         text-align: center;
     }
+    
+    [part~="footer-cell"] ::slotted(vaadin-grid-cell-content) {
+        font-size: var(--lumo-font-size-m);
+        font-weight: 500;
+    }
 `);
 
 document.head.appendChild($_documentContainer.content);

@@ -58,46 +58,46 @@
     "assessed": false,
     "probabilityEvaluations": [
       {
-        "weight" : 10,
-        "value": 0.22
+        "value": 0.22,
+        "weight" : 10
       },
       {
-        "weight" : 5,
-        "value": 0.76
+        "value": 0.76,
+        "weight" : 5
       },
       {
-        "weight" : 5,
-        "value": 0.32
+        "value": 0.32,
+        "weight" : 5
       },
       {
-        "weight" : 7,
-        "value": 0.25
+        "value": 0.25,
+        "weight" : 7
       },
       {
-        "weight" : 6,
-        "value": 0.29
+        "value": 0.29,
+        "weight" : 6
       }
     ],
     "lossEvaluations": [
       {
-        "weight" : 9,
-        "value": 0.46
+        "value": 0.46,
+        "weight" : 9
       },
       {
-        "weight" : 7,
-        "value": 0.28
+        "value": 0.28,
+        "weight" : 7
       },
       {
-        "weight" : 9,
-        "value": 0.24
+        "value": 0.24,
+        "weight" : 9
       },
       {
-        "weight" : 7,
-        "value": 0.39
+        "value": 0.39,
+        "weight" : 7
       },
       {
-        "weight" : 7,
-        "value": 0.66
+        "value": 0.66,
+        "weight" : 7
       }
     ]
   },
@@ -109,46 +109,1984 @@
     "assessed": true,
     "probabilityEvaluations": [
       {
-        "weight" : 10,
-        "value": 0.77
+        "value": 0.77,
+        "weight" : 10
       },
       {
-        "weight" : 5,
-        "value": 0.88
+        "value": 0.88,
+        "weight" : 5
       },
       {
-        "weight" : 5,
-        "value": 0.45
+        "value": 0.45,
+        "weight" : 5
       },
       {
-        "weight" : 7,
-        "value": 0.44
+        "value": 0.44,
+        "weight" : 7
       },
       {
-        "weight" : 6,
-        "value": 0.94
+        "value": 0.94,
+        "weight" : 6
       }
     ],
     "lossEvaluations": [
       {
-        "weight" : 9,
-        "value": 0.57
+        "value": 0.57,
+        "weight" : 9
       },
       {
-        "weight" : 7,
-        "value": 0.72
+        "value": 0.72,
+        "weight" : 7
       },
       {
-        "weight" : 9,
-        "value": 0.32
+        "value": 0.32,
+        "weight" : 9
       },
       {
-        "weight" : 7,
-        "value": 0.75
+        "value": 0.75,
+        "weight" : 7
       },
       {
-        "weight" : 7,
-        "value": 0.84
+        "value": 0.84,
+        "weight" : 7
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Технічні",
+    "name" : "Формування запитів на більш потужні інструментальні засоби розроблення ПЗ",
+    "budget" : 32.06,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.77,
+        "weight" : 10
+      },
+      {
+        "value": 0.88,
+        "weight" : 5
+      },
+      {
+        "value": 0.45,
+        "weight" : 5
+      },
+      {
+        "value": 0.44,
+        "weight" : 7
+      },
+      {
+        "value": 0.94,
+        "weight" : 6
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.57,
+        "weight" : 9
+      },
+      {
+        "value": 0.72,
+        "weight" : 7
+      },
+      {
+        "value": 0.32,
+        "weight" : 9
+      },
+      {
+        "value": 0.75,
+        "weight" : 7
+      },
+      {
+        "value": 0.84,
+        "weight" : 7
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Технічні",
+    "name" : "Відмова команди виконавців від CASE-засобів розроблення ПЗ",
+    "budget" : 29.35,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.99,
+        "weight" : 10
+      },
+      {
+        "value": 0.24,
+        "weight" : 5
+      },
+      {
+        "value": 0.95,
+        "weight" : 5
+      },
+      {
+        "value": 0.85,
+        "weight" : 7
+      },
+      {
+        "value": 0.90,
+        "weight" : 6
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.38,
+        "weight" : 9
+      },
+      {
+        "value": 0.51,
+        "weight" : 7
+      },
+      {
+        "value": 0.56,
+        "weight" : 9
+      },
+      {
+        "value": 0.63,
+        "weight" : 7
+      },
+      {
+        "value": 0.30,
+        "weight" : 7
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Технічні",
+    "name" : "Неефективність програмного коду, згенерованого CASE-засобами розроблення ПЗ",
+    "budget" : 29.64,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.64,
+        "weight" : 10
+      },
+      {
+        "value": 0.69,
+        "weight" : 5
+      },
+      {
+        "value": 0.29,
+        "weight" : 5
+      },
+      {
+        "value": 0.57,
+        "weight" : 7
+      },
+      {
+        "value": 0.21,
+        "weight" : 6
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.15,
+        "weight" : 9
+      },
+      {
+        "value": 0.22,
+        "weight" : 7
+      },
+      {
+        "value": 0.42,
+        "weight" : 9
+      },
+      {
+        "value": 0.46,
+        "weight" : 7
+      },
+      {
+        "value": 0.24,
+        "weight" : 7
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Технічні",
+    "name" : "Неможливість інтеграції CASE-засобів з іншими інструментальними засобами для підтримки процесу розроблення ПЗ",
+    "budget" : 29.14,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.70,
+        "weight" : 10
+      },
+      {
+        "value": 0.26,
+        "weight" : 5
+      },
+      {
+        "value": 0.19,
+        "weight" : 5
+      },
+      {
+        "value": 0.63,
+        "weight" : 7
+      },
+      {
+        "value": 0.39,
+        "weight" : 6
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.39,
+        "weight" : 9
+      },
+      {
+        "value": 0.37,
+        "weight" : 7
+      },
+      {
+        "value": 0.28,
+        "weight" : 9
+      },
+      {
+        "value": 0.20,
+        "weight" : 7
+      },
+      {
+        "value": 0.73,
+        "weight" : 7
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Технічні",
+    "name" : "Недостатня продуктивність баз(и) даних для підтримки процесу розроблення ПЗ",
+    "budget" : 31.68,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.30,
+        "weight" : 10
+      },
+      {
+        "value": 0.10,
+        "weight" : 5
+      },
+      {
+        "value": 0.12,
+        "weight" : 5
+      },
+      {
+        "value": 0.37,
+        "weight" : 7
+      },
+      {
+        "value": 0.21,
+        "weight" : 6
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.18,
+        "weight" : 9
+      },
+      {
+        "value": 0.33,
+        "weight" : 7
+      },
+      {
+        "value": 0.40,
+        "weight" : 9
+      },
+      {
+        "value": 0.28,
+        "weight" : 7
+      },
+      {
+        "value": 0.28,
+        "weight" : 7
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Технічні",
+    "name" : "Програмні компоненти, які використовують повторно в ПЗ, мають дефекти та обмежені функціональні можливості",
+    "budget" : 34.80,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.58,
+        "weight" : 10
+      },
+      {
+        "value": 0.37,
+        "weight" : 5
+      },
+      {
+        "value": 0.37,
+        "weight" : 5
+      },
+      {
+        "value": 0.56,
+        "weight" : 7
+      },
+      {
+        "value": 0.40,
+        "weight" : 6
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.37,
+        "weight" : 9
+      },
+      {
+        "value": 0.42,
+        "weight" : 7
+      },
+      {
+        "value": 0.46,
+        "weight" : 9
+      },
+      {
+        "value": 0.67,
+        "weight" : 7
+      },
+      {
+        "value": 0.80,
+        "weight" : 7
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Технічні",
+    "name" : "Швидкість виявлення дефектів у програмному коді є нижчою від раніше запланованих термінів",
+    "budget" : 21.90,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.31,
+        "weight" : 10
+      },
+      {
+        "value": 0.66,
+        "weight" : 5
+      },
+      {
+        "value": 0.35,
+        "weight" : 5
+      },
+      {
+        "value": 0.28,
+        "weight" : 7
+      },
+      {
+        "value": 0.16,
+        "weight" : 6
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.34,
+        "weight" : 9
+      },
+      {
+        "value": 0.27,
+        "weight" : 7
+      },
+      {
+        "value": 0.23,
+        "weight" : 9
+      },
+      {
+        "value": 0.58,
+        "weight" : 7
+      },
+      {
+        "value": 0.57,
+        "weight" : 7
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Технічні",
+    "name" : "Поява дефектних системних компонент, які використовують для розроблення ПЗ",
+    "budget" : 41.03,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.99,
+        "weight" : 10
+      },
+      {
+        "value": 0.80,
+        "weight" : 5
+      },
+      {
+        "value": 0.75,
+        "weight" : 5
+      },
+      {
+        "value": 0.59,
+        "weight" : 7
+      },
+      {
+        "value": 0.62,
+        "weight" : 6
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.53,
+        "weight" : 9
+      },
+      {
+        "value": 0.23,
+        "weight" : 7
+      },
+      {
+        "value": 0.49,
+        "weight" : 9
+      },
+      {
+        "value": 0.26,
+        "weight" : 7
+      },
+      {
+        "value": 0.48,
+        "weight" : 7
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Вартісні",
+    "name" : "Недо(пере)оцінювання витрат на реалізацію програмного проекту (надмірно низька вартість)",
+    "budget" : 59.86,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.05,
+        "weight" : 8
+      },
+      {
+        "value": 0.09,
+        "weight" : 10
+      },
+      {
+        "value": 0.02,
+        "weight" : 9
+      },
+      {
+        "value": 0.14,
+        "weight" : 9
+      },
+      {
+        "value": 0.18,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.25,
+        "weight" : 8
+      },
+      {
+        "value": 0.67,
+        "weight" : 9
+      },
+      {
+        "value": 0.32,
+        "weight" : 10
+      },
+      {
+        "value": 0.60,
+        "weight" : 9
+      },
+      {
+        "value": 0.36,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Вартісні",
+    "name" : "Фінансові ускладнення у компанії-замовника ПЗ",
+    "budget" : 68.09,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.23,
+        "weight" : 8
+      },
+      {
+        "value": 0.49,
+        "weight" : 10
+      },
+      {
+        "value": 0.25,
+        "weight" : 9
+      },
+      {
+        "value": 0.31,
+        "weight" : 9
+      },
+      {
+        "value": 0.47,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.37,
+        "weight" : 8
+      },
+      {
+        "value": 0.38,
+        "weight" : 9
+      },
+      {
+        "value": 0.16,
+        "weight" : 10
+      },
+      {
+        "value": 0.13,
+        "weight" : 9
+      },
+      {
+        "value": 0.39,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Вартісні",
+    "name" : "Фінансові ускладнення у компанії-розробника ПЗ",
+    "budget" : 69.09,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.24,
+        "weight" : 8
+      },
+      {
+        "value": 0.42,
+        "weight" : 10
+      },
+      {
+        "value": 0.13,
+        "weight" : 9
+      },
+      {
+        "value": 0.48,
+        "weight" : 9
+      },
+      {
+        "value": 0.21,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.22,
+        "weight" : 8
+      },
+      {
+        "value": 0.42,
+        "weight" : 9
+      },
+      {
+        "value": 0.39,
+        "weight" : 10
+      },
+      {
+        "value": 0.70,
+        "weight" : 9
+      },
+      {
+        "value": 0.08,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Вартісні",
+    "name" : "Змен(збіль)шення бюджету програмного проекта з ініціативи компанії-замовника ПЗ під час його реалізації",
+    "budget" : 57.23,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.65,
+        "weight" : 8
+      },
+      {
+        "value": 0.20,
+        "weight" : 10
+      },
+      {
+        "value": 0.15,
+        "weight" : 9
+      },
+      {
+        "value": 0.38,
+        "weight" : 9
+      },
+      {
+        "value": 0.46,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.28,
+        "weight" : 8
+      },
+      {
+        "value": 0.49,
+        "weight" : 9
+      },
+      {
+        "value": 0.23,
+        "weight" : 10
+      },
+      {
+        "value": 0.13,
+        "weight" : 9
+      },
+      {
+        "value": 0.20,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Вартісні",
+    "name" : "Висока вартість виконання повторних робіт, необхідних для зміни вимог до ПЗ",
+    "budget" : 52.39,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.32,
+        "weight" : 8
+      },
+      {
+        "value": 0.36,
+        "weight" : 10
+      },
+      {
+        "value": 0.26,
+        "weight" : 9
+      },
+      {
+        "value": 0.13,
+        "weight" : 9
+      },
+      {
+        "value": 0.33,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.17,
+        "weight" : 8
+      },
+      {
+        "value": 0.71,
+        "weight" : 9
+      },
+      {
+        "value": 0.47,
+        "weight" : 10
+      },
+      {
+        "value": 0.50,
+        "weight" : 9
+      },
+      {
+        "value": 0.28,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Вартісні",
+    "name" : "Реорганізація структурних підрозділів у компанії-замовника ПЗ",
+    "budget" : 52.91,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.46,
+        "weight" : 8
+      },
+      {
+        "value": 0.72,
+        "weight" : 10
+      },
+      {
+        "value": 0.38,
+        "weight" : 9
+      },
+      {
+        "value": 0.26,
+        "weight" : 9
+      },
+      {
+        "value": 0.16,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.29,
+        "weight" : 8
+      },
+      {
+        "value": 0.34,
+        "weight" : 9
+      },
+      {
+        "value": 0.47,
+        "weight" : 10
+      },
+      {
+        "value": 0.68,
+        "weight" : 9
+      },
+      {
+        "value": 0.68,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Вартісні",
+    "name" : "Реорганізація команди виконавців у компанії-розробника ПЗ",
+    "budget" : 52.02,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.63,
+        "weight" : 8
+      },
+      {
+        "value": 0.38,
+        "weight" : 10
+      },
+      {
+        "value": 0.74,
+        "weight" : 9
+      },
+      {
+        "value": 0.82,
+        "weight" : 9
+      },
+      {
+        "value": 0.33,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.29,
+        "weight" : 8
+      },
+      {
+        "value": 0.27,
+        "weight" : 9
+      },
+      {
+        "value": 0.12,
+        "weight" : 10
+      },
+      {
+        "value": 0.39,
+        "weight" : 9
+      },
+      {
+        "value": 0.73,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Планові",
+    "name" : "Зміни графіка виконання робіт з боку замовника чи розробника ПЗ",
+    "budget" : 38.55,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.67,
+        "weight" : 10
+      },
+      {
+        "value": 0.78,
+        "weight" : 10
+      },
+      {
+        "value": 0.23,
+        "weight" : 8
+      },
+      {
+        "value": 0.60,
+        "weight" : 10
+      },
+      {
+        "value": 0.20,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.36,
+        "weight" : 9
+      },
+      {
+        "value": 0.75,
+        "weight" : 10
+      },
+      {
+        "value": 0.58,
+        "weight" : 10
+      },
+      {
+        "value": 0.48,
+        "weight" : 5
+      },
+      {
+        "value": 0.59,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Планові",
+    "name" : "Порушення графіка виконання робіт з боку компанії-розробника ПЗ",
+    "budget" : 43.84,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.40,
+        "weight" : 10
+      },
+      {
+        "value": 0.51,
+        "weight" : 10
+      },
+      {
+        "value": 0.38,
+        "weight" : 8
+      },
+      {
+        "value": 0.41,
+        "weight" : 10
+      },
+      {
+        "value": 0.53,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.47,
+        "weight" : 9
+      },
+      {
+        "value": 0.45,
+        "weight" : 10
+      },
+      {
+        "value": 0.56,
+        "weight" : 10
+      },
+      {
+        "value": 0.39,
+        "weight" : 5
+      },
+      {
+        "value": 0.52,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Планові",
+    "name" : "Потреба зміни користувацьких вимог до ПЗ з боку компанії-замовника ПЗ",
+    "budget" : 44.49,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.31,
+        "weight" : 10
+      },
+      {
+        "value": 0.68,
+        "weight" : 10
+      },
+      {
+        "value": 0.37,
+        "weight" : 8
+      },
+      {
+        "value": 0.20,
+        "weight" : 10
+      },
+      {
+        "value": 0.66,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.27,
+        "weight" : 9
+      },
+      {
+        "value": 0.39,
+        "weight" : 10
+      },
+      {
+        "value": 0.43,
+        "weight" : 10
+      },
+      {
+        "value": 0.76,
+        "weight" : 5
+      },
+      {
+        "value": 0.55,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Планові",
+    "name" : "Потреба зміни функціональних вимог до ПЗ з боку компанії-розробника ПЗ",
+    "budget" : 36.85,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.10,
+        "weight" : 10
+      },
+      {
+        "value": 0.22,
+        "weight" : 10
+      },
+      {
+        "value": 0.27,
+        "weight" : 8
+      },
+      {
+        "value": 0.15,
+        "weight" : 10
+      },
+      {
+        "value": 0.39,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.33,
+        "weight" : 9
+      },
+      {
+        "value": 0.45,
+        "weight" : 10
+      },
+      {
+        "value": 0.23,
+        "weight" : 10
+      },
+      {
+        "value": 0.19,
+        "weight" : 5
+      },
+      {
+        "value": 0.78,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Планові",
+    "name" : "Потреба виконання великої кількості повторних робіт, необхідних для зміни вимог до ПЗ",
+    "budget" : 33.74,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.57,
+        "weight" : 10
+      },
+      {
+        "value": 0.66,
+        "weight" : 10
+      },
+      {
+        "value": 0.39,
+        "weight" : 8
+      },
+      {
+        "value": 0.57,
+        "weight" : 10
+      },
+      {
+        "value": 0.66,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.46,
+        "weight" : 9
+      },
+      {
+        "value": 0.26,
+        "weight" : 10
+      },
+      {
+        "value": 0.22,
+        "weight" : 10
+      },
+      {
+        "value": 0.34,
+        "weight" : 5
+      },
+      {
+        "value": 0.47,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Планові",
+    "name" : "Недо(пере)оцінювання тривалості етапів реалізації програмного проекту з боку компанії-замовника ПЗ",
+    "budget" : 34.07,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.45,
+        "weight" : 10
+      },
+      {
+        "value": 0.50,
+        "weight" : 10
+      },
+      {
+        "value": 0.21,
+        "weight" : 8
+      },
+      {
+        "value": 0.54,
+        "weight" : 10
+      },
+      {
+        "value": 0.56,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.36,
+        "weight" : 9
+      },
+      {
+        "value": 0.47,
+        "weight" : 10
+      },
+      {
+        "value": 0.56,
+        "weight" : 10
+      },
+      {
+        "value": 0.79,
+        "weight" : 5
+      },
+      {
+        "value": 0.36,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Планові",
+    "name" : "Остаточний розмір ПЗ значно перевищує (менший від) заплановані(их) його характеристики",
+    "budget" : 33.50,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.26,
+        "weight" : 10
+      },
+      {
+        "value": 0.57,
+        "weight" : 10
+      },
+      {
+        "value": 0.32,
+        "weight" : 8
+      },
+      {
+        "value": 0.49,
+        "weight" : 10
+      },
+      {
+        "value": 0.47,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.52,
+        "weight" : 9
+      },
+      {
+        "value": 0.81,
+        "weight" : 10
+      },
+      {
+        "value": 0.54,
+        "weight" : 10
+      },
+      {
+        "value": 0.35,
+        "weight" : 5
+      },
+      {
+        "value": 0.39,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Планові",
+    "name" : "Поява на ринку аналогічного ПЗ до виходу замовленого",
+    "budget" : 36.41,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.20,
+        "weight" : 10
+      },
+      {
+        "value": 0.72,
+        "weight" : 10
+      },
+      {
+        "value": 0.36,
+        "weight" : 8
+      },
+      {
+        "value": 0.34,
+        "weight" : 10
+      },
+      {
+        "value": 0.49,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.33,
+        "weight" : 9
+      },
+      {
+        "value": 0.38,
+        "weight" : 10
+      },
+      {
+        "value": 0.34,
+        "weight" : 10
+      },
+      {
+        "value": 0.73,
+        "weight" : 5
+      },
+      {
+        "value": 0.81,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Планові",
+    "name" : "Поява на ринку більш конкурентоздатного ПЗ",
+    "budget" : 39.99,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.68,
+        "weight" : 10
+      },
+      {
+        "value": 0.31,
+        "weight" : 10
+      },
+      {
+        "value": 0.27,
+        "weight" : 8
+      },
+      {
+        "value": 0.60,
+        "weight" : 10
+      },
+      {
+        "value": 0.54,
+        "weight" : 10
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.35,
+        "weight" : 9
+      },
+      {
+        "value": 0.67,
+        "weight" : 10
+      },
+      {
+        "value": 0.42,
+        "weight" : 10
+      },
+      {
+        "value": 0.73,
+        "weight" : 5
+      },
+      {
+        "value": 0.32,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Низький моральний стан персоналу команди виконавців ПЗ",
+    "budget" : 35.13,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.90,
+        "weight" : 8
+      },
+      {
+        "value": 0.72,
+        "weight" : 10
+      },
+      {
+        "value": 0.75,
+        "weight" : 8
+      },
+      {
+        "value": 0.68,
+        "weight" : 10
+      },
+      {
+        "value": 0.83,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.24,
+        "weight" : 10
+      },
+      {
+        "value": 0.73,
+        "weight" : 9
+      },
+      {
+        "value": 0.16,
+        "weight" : 8
+      },
+      {
+        "value": 0.54,
+        "weight" : 10
+      },
+      {
+        "value": 0.66,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Низька взаємодія між членами команди виконавців ПЗ",
+    "budget" : 39.96,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.46,
+        "weight" : 8
+      },
+      {
+        "value": 0.44,
+        "weight" : 10
+      },
+      {
+        "value": 0.35,
+        "weight" : 8
+      },
+      {
+        "value": 0.41,
+        "weight" : 10
+      },
+      {
+        "value": 0.30,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.34,
+        "weight" : 10
+      },
+      {
+        "value": 0.71,
+        "weight" : 9
+      },
+      {
+        "value": 0.40,
+        "weight" : 8
+      },
+      {
+        "value": 0.35,
+        "weight" : 10
+      },
+      {
+        "value": 0.44,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Пасивність керівника (менеджера) програмного проекту",
+    "budget" : 40.54,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.50,
+        "weight" : 8
+      },
+      {
+        "value": 0.65,
+        "weight" : 10
+      },
+      {
+        "value": 0.39,
+        "weight" : 8
+      },
+      {
+        "value": 0.37,
+        "weight" : 10
+      },
+      {
+        "value": 0.51,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.47,
+        "weight" : 10
+      },
+      {
+        "value": 0.34,
+        "weight" : 9
+      },
+      {
+        "value": 0.27,
+        "weight" : 8
+      },
+      {
+        "value": 0.59,
+        "weight" : 10
+      },
+      {
+        "value": 0.14,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Недостатня компетентність керівника (менеджера) програмного проекту",
+    "budget" : 33.58,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.52,
+        "weight" : 8
+      },
+      {
+        "value": 0.14,
+        "weight" : 10
+      },
+      {
+        "value": 0.23,
+        "weight" : 8
+      },
+      {
+        "value": 0.23,
+        "weight" : 10
+      },
+      {
+        "value": 0.58,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.29,
+        "weight" : 10
+      },
+      {
+        "value": 0.22,
+        "weight" : 9
+      },
+      {
+        "value": 0.22,
+        "weight" : 8
+      },
+      {
+        "value": 0.14,
+        "weight" : 10
+      },
+      {
+        "value": 0.39,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Незадоволеність замовника результатами етапів реалізації програмного проекту",
+    "budget" : 30.75,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.02,
+        "weight" : 8
+      },
+      {
+        "value": 0.23,
+        "weight" : 10
+      },
+      {
+        "value": 0.12,
+        "weight" : 8
+      },
+      {
+        "value": 0.21,
+        "weight" : 10
+      },
+      {
+        "value": 0.56,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.29,
+        "weight" : 10
+      },
+      {
+        "value": 0.76,
+        "weight" : 9
+      },
+      {
+        "value": 0.39,
+        "weight" : 8
+      },
+      {
+        "value": 0.42,
+        "weight" : 10
+      },
+      {
+        "value": 0.25,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Недостатня кількість фахівців у команді виконавців ПЗ з необхідним професійним рівнем",
+    "budget" : 31.05,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.54,
+        "weight" : 8
+      },
+      {
+        "value": 0.26,
+        "weight" : 10
+      },
+      {
+        "value": 0.37,
+        "weight" : 8
+      },
+      {
+        "value": 0.58,
+        "weight" : 10
+      },
+      {
+        "value": 0.56,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.48,
+        "weight" : 10
+      },
+      {
+        "value": 0.54,
+        "weight" : 9
+      },
+      {
+        "value": 0.42,
+        "weight" : 8
+      },
+      {
+        "value": 0.42,
+        "weight" : 10
+      },
+      {
+        "value": 0.53,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Хвороба провідного виконавця в найкритичніший момент розроблення ПЗ",
+    "budget" : 30.53,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.60,
+        "weight" : 8
+      },
+      {
+        "value": 0.63,
+        "weight" : 10
+      },
+      {
+        "value": 0.28,
+        "weight" : 8
+      },
+      {
+        "value": 0.46,
+        "weight" : 10
+      },
+      {
+        "value": 0.21,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.51,
+        "weight" : 10
+      },
+      {
+        "value": 0.58,
+        "weight" : 9
+      },
+      {
+        "value": 0.26,
+        "weight" : 8
+      },
+      {
+        "value": 0.75,
+        "weight" : 10
+      },
+      {
+        "value": 0.17,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Одночасна хвороба декількох виконавців підчас розроблення ПЗ",
+    "budget" : 33.19,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.04,
+        "weight" : 8
+      },
+      {
+        "value": 0.08,
+        "weight" : 10
+      },
+      {
+        "value": 0.10,
+        "weight" : 8
+      },
+      {
+        "value": 0.13,
+        "weight" : 10
+      },
+      {
+        "value": 0.06,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.27,
+        "weight" : 10
+      },
+      {
+        "value": 0.63,
+        "weight" : 9
+      },
+      {
+        "value": 0.48,
+        "weight" : 8
+      },
+      {
+        "value": 0.44,
+        "weight" : 10
+      },
+      {
+        "value": 0.71,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Неможливість організації необхідного навчання персоналу команди виконавців ПЗ",
+    "budget" : 36.45,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.74,
+        "weight" : 8
+      },
+      {
+        "value": 0.72,
+        "weight" : 10
+      },
+      {
+        "value": 0.33,
+        "weight" : 8
+      },
+      {
+        "value": 0.32,
+        "weight" : 10
+      },
+      {
+        "value": 0.22,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.45,
+        "weight" : 10
+      },
+      {
+        "value": 0.32,
+        "weight" : 9
+      },
+      {
+        "value": 0.17,
+        "weight" : 8
+      },
+      {
+        "value": 0.64,
+        "weight" : 10
+      },
+      {
+        "value": 0.42,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Зміна пріоритетів у процесі управління програмним проектом",
+    "budget" : 22.94,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.35,
+        "weight" : 8
+      },
+      {
+        "value": 0.62,
+        "weight" : 10
+      },
+      {
+        "value": 0.35,
+        "weight" : 8
+      },
+      {
+        "value": 0.51,
+        "weight" : 10
+      },
+      {
+        "value": 0.28,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.35,
+        "weight" : 10
+      },
+      {
+        "value": 0.50,
+        "weight" : 9
+      },
+      {
+        "value": 0.45,
+        "weight" : 8
+      },
+      {
+        "value": 0.45,
+        "weight" : 10
+      },
+      {
+        "value": 0.33,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Недо(пере)оцінювання необхідної кількості розробників (підрядників і субпідрядників) на етапах життєвого циклу розроблення ПЗ",
+    "budget" : 42.97,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.61,
+        "weight" : 8
+      },
+      {
+        "value": 0.13,
+        "weight" : 10
+      },
+      {
+        "value": 0.16,
+        "weight" : 8
+      },
+      {
+        "value": 0.17,
+        "weight" : 10
+      },
+      {
+        "value": 0.34,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.33,
+        "weight" : 10
+      },
+      {
+        "value": 0.63,
+        "weight" : 9
+      },
+      {
+        "value": 0.17,
+        "weight" : 8
+      },
+      {
+        "value": 0.31,
+        "weight" : 10
+      },
+      {
+        "value": 0.44,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Недостатнє (надмірне) документування результатів на етапах реалізації програмного проекту",
+    "budget" : 15.34,
+    "assessed": true,
+    "probabilityEvaluations": [
+      {
+        "value": 0.14,
+        "weight" : 8
+      },
+      {
+        "value": 0.56,
+        "weight" : 10
+      },
+      {
+        "value": 0.34,
+        "weight" : 8
+      },
+      {
+        "value": 0.47,
+        "weight" : 10
+      },
+      {
+        "value": 0.47,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.38,
+        "weight" : 10
+      },
+      {
+        "value": 0.48,
+        "weight" : 9
+      },
+      {
+        "value": 0.52,
+        "weight" : 8
+      },
+      {
+        "value": 0.75,
+        "weight" : 10
+      },
+      {
+        "value": 0.73,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Нереалістичне прогнозування результатів на етапах реалізації програмного проекту",
+    "budget" : 26.79,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.64,
+        "weight" : 8
+      },
+      {
+        "value": 0.70,
+        "weight" : 10
+      },
+      {
+        "value": 0.16,
+        "weight" : 8
+      },
+      {
+        "value": 0.42,
+        "weight" : 10
+      },
+      {
+        "value": 0.47,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.56,
+        "weight" : 10
+      },
+      {
+        "value": 0.62,
+        "weight" : 9
+      },
+      {
+        "value": 0.33,
+        "weight" : 8
+      },
+      {
+        "value": 0.55,
+        "weight" : 10
+      },
+      {
+        "value": 0.72,
+        "weight" : 9
+      }
+    ]
+  },
+  {
+    "_class": "org.monjasa.application.model.RiskEvent",
+    "riskType" : "Операційні",
+    "name" : "Недостатній професійний рівень представників від компанії-замовника ПЗ",
+    "budget" : 11.55,
+    "assessed": false,
+    "probabilityEvaluations": [
+      {
+        "value": 0.28,
+        "weight" : 8
+      },
+      {
+        "value": 0.22,
+        "weight" : 10
+      },
+      {
+        "value": 0.34,
+        "weight" : 8
+      },
+      {
+        "value": 0.49,
+        "weight" : 10
+      },
+      {
+        "value": 0.29,
+        "weight" : 9
+      }
+    ],
+    "lossEvaluations": [
+      {
+        "value": 0.45,
+        "weight" : 10
+      },
+      {
+        "value": 0.21,
+        "weight" : 9
+      },
+      {
+        "value": 0.32,
+        "weight" : 8
+      },
+      {
+        "value": 0.66,
+        "weight" : 10
+      },
+      {
+        "value": 0.68,
+        "weight" : 9
       }
     ]
   }
