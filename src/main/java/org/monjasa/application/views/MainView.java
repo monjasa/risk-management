@@ -2,9 +2,7 @@ package org.monjasa.application.views;
 
 import java.util.Optional;
 
-import org.monjasa.application.views.pages.RiskEventProbabilitiesView;
-import org.monjasa.application.views.pages.RiskEventsLossView;
-import org.monjasa.application.views.pages.RiskEventsView;
+import org.monjasa.application.views.pages.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -22,14 +20,13 @@ import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.PWA;
-import org.monjasa.application.views.pages.RiskSourcesView;
 
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/main-view.css")
 @PWA(name = "Risk Management", shortName = "Risk Management", enableInstallPrompt = false)
 public class MainView extends AppLayout {
 
-    private final Tabs menu;
+    private Tabs menu;
     private H1 viewTitle;
 
     public MainView() {
@@ -40,40 +37,52 @@ public class MainView extends AppLayout {
     }
 
     private Component createHeaderContent() {
+
         HorizontalLayout layout = new HorizontalLayout();
+
         layout.setId("header");
         layout.getThemeList().set("dark", true);
         layout.setWidthFull();
         layout.setSpacing(false);
         layout.setAlignItems(FlexComponent.Alignment.CENTER);
         layout.add(new DrawerToggle());
+
         viewTitle = new H1();
         layout.add(viewTitle);
+
         return layout;
     }
 
     private Component createDrawerContent(Tabs menu) {
+
         VerticalLayout layout = new VerticalLayout();
+
         layout.setSizeFull();
         layout.setPadding(false);
         layout.setSpacing(false);
         layout.getThemeList().set("spacing-s", true);
         layout.setAlignItems(FlexComponent.Alignment.STRETCH);
+
         HorizontalLayout logoLayout = new HorizontalLayout();
+
         logoLayout.setId("logo");
         logoLayout.setAlignItems(FlexComponent.Alignment.CENTER);
         logoLayout.add(new Image("images/logo.png", "Управління ризиками - логотип"));
         logoLayout.add(new H1("Управління ризиками"));
+
         layout.add(logoLayout, menu);
         return layout;
     }
 
     private Tabs createMenu() {
-        final Tabs tabs = new Tabs();
+
+        Tabs tabs = new Tabs();
+
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         tabs.addThemeVariants(TabsVariant.LUMO_MINIMAL);
         tabs.setId("tabs");
         tabs.add(createMenuItems());
+
         return tabs;
     }
 
@@ -82,14 +91,18 @@ public class MainView extends AppLayout {
                 createTab("Джерела ризиків", RiskSourcesView.class),
                 createTab("Потенційні ризикові події", RiskEventsView.class),
                 createTab("Ймовірність ризикових подій", RiskEventProbabilitiesView.class),
-                createTab("Величина ризику", RiskEventsLossView.class)
+                createTab("Величина ризиків", RiskEventLossView.class),
+                createTab("Планування ризиків", RiskArrangementsView.class)
         };
     }
 
     private static Tab createTab(String text, Class<? extends Component> navigationTarget) {
-        final Tab tab = new Tab();
+
+        Tab tab = new Tab();
         tab.add(new RouterLink(text, navigationTarget));
+
         ComponentUtil.setData(tab, Class.class, navigationTarget);
+
         return tab;
     }
 

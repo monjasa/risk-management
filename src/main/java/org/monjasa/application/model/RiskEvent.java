@@ -39,7 +39,9 @@ public class RiskEvent {
     @Fetch(value = FetchMode.SUBSELECT)
     private List<Evaluation> lossEvaluations;
 
-//    private Arrangement arrangement;
+    @ManyToOne()
+    @JoinColumn(name = "arrangement_id")
+    private Arrangement arrangement;
 
     public double getWeightedRiskProbability() {
 
@@ -52,5 +54,22 @@ public class RiskEvent {
                 .mapToDouble(Evaluation::getWeightedValue)
                 .summaryStatistics()
                 .getSum() / weightSum;
+    }
+
+    public double getWeightedRiskLoss() {
+
+        int weightSum = lossEvaluations.stream()
+                .map(Evaluation::getWeight)
+                .reduce(Integer::sum)
+                .orElse(1);
+
+        return lossEvaluations.stream()
+                .mapToDouble(Evaluation::getWeightedValue)
+                .summaryStatistics()
+                .getSum() / weightSum;
+    }
+
+    public BigDecimal getBudgetLoss() {
+        return budget.multiply(BigDecimal.valueOf(getWeightedRiskLoss()));
     }
 }

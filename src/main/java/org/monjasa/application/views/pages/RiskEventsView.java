@@ -87,6 +87,7 @@ public class RiskEventsView extends VerticalLayout {
         riskEventsGrid = new GridPro<>();
         riskEventsGrid.addThemeName("row-stripes");
         riskEventsGrid.addThemeName("wrap-cell-content");
+        riskEventsGrid.getStyle().set("margin-bottom", "2em");
 
         riskEventsGrid.addEditColumn(RiskEvent::getRiskType)
                 .select(RiskEvent::setRiskType, RiskType.class)
@@ -106,7 +107,6 @@ public class RiskEventsView extends VerticalLayout {
         riskTypesGrid = new Grid<>();
         riskTypesGrid.addThemeName("row-stripes");
         riskTypesGrid.addThemeName("wrap-cell-content");
-        riskTypesGrid.getStyle().set("margin-bottom", "2em");
         riskTypesGrid.setHeightByRows(true);
 
         riskTypesGrid.setItems(RiskType.values());
@@ -117,9 +117,9 @@ public class RiskEventsView extends VerticalLayout {
         });
 
         add(new H1("Етап 1.2. Ідентифікація потенційних ризикових подій"));
-        add(new H2("Модель ідентифікації потенційних ризикових подій"));
-        add(riskEventsGrid);
         add(new H2("Множини настання потенційних ризикових подій"));
         add(riskTypesGrid);
+        add(new H2("Модель ідентифікації потенційних ризикових подій"));
+        add(riskEventsGrid);
     }
 }

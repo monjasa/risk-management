@@ -27,7 +27,6 @@ public enum ProbabilityBracket {
                 .orElse(VERY_HIGH);
     }
 
-
     @Override
     public String toString() {
         return name;

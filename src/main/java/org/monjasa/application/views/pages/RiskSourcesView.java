@@ -94,6 +94,7 @@ public class RiskSourcesView extends VerticalLayout {
         riskSourcesGrid = new GridPro<>();
         riskSourcesGrid.addThemeName("row-stripes");
         riskSourcesGrid.addThemeName("wrap-cell-content");
+        riskSourcesGrid.getStyle().set("margin-bottom", "2em");
 
         riskSourcesGrid.addEditColumn(RiskSource::getRiskType)
                 .select(RiskSource::setRiskType, RiskType.class)
@@ -112,7 +113,6 @@ public class RiskSourcesView extends VerticalLayout {
         riskTypesGrid = new Grid<>();
         riskTypesGrid.addThemeName("row-stripes");
         riskTypesGrid.addThemeName("wrap-cell-content");
-        riskTypesGrid.getStyle().set("margin-bottom", "2em");
         riskTypesGrid.setHeightByRows(true);
 
         riskTypesGrid.setItems(RiskType.values());
@@ -123,9 +123,9 @@ public class RiskSourcesView extends VerticalLayout {
         });
 
         add(new H1("Етап 1.1. Визначення можливих джерел появи ризиків"));
-        add(new H2("Модель можливих джерел появи ризиків розроблення ПЗ"));
-        add(riskSourcesGrid);
         add(new H2("Множини джерел появи ризиків"));
         add(riskTypesGrid);
+        add(new H2("Модель можливих джерел появи ризиків розроблення ПЗ"));
+        add(riskSourcesGrid);
     }
 }

@@ -5,7 +5,6 @@ import com.vaadin.flow.component.grid.Grid.Column;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.gridpro.GridPro;
 import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.renderer.NumberRenderer;
@@ -13,6 +12,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.monjasa.application.model.RiskEvent;
 import org.monjasa.application.model.RiskType;
+import org.monjasa.application.model.bracket.PriorityBracket;
 import org.monjasa.application.model.bracket.ProbabilityBracket;
 import org.monjasa.application.service.RiskEventService;
 import org.monjasa.application.views.MainView;
@@ -21,18 +21,23 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 
 import javax.annotation.PostConstruct;
-import java.util.*;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
 
 import static com.vaadin.flow.data.provider.SortDirection.ASCENDING;
 
-@Route(value = "risk-event-probabilities", layout = MainView.class)
-@PageTitle("Ймовірності настання ризикових подій")
-public class RiskEventProbabilitiesView extends VerticalLayout {
+@Route(value = "risk-events-loss", layout = MainView.class)
+@PageTitle("Величина ризику")
+public class RiskEventLossView extends VerticalLayout {
 
     public static final int EVALUATIONS_COUNT = 5;
 
     @SuppressWarnings("SpringJavaAutowiredMembersInspection")
-    @Autowired private RiskEventService riskEventService;
+    @Autowired
+    private RiskEventService riskEventService;
 
     private final GridPro<RiskEvent> riskEventsGrid;
 
@@ -53,7 +58,7 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
         );
     }
 
-    public RiskEventProbabilitiesView() {
+    public RiskEventLossView() {
 
         setId("risk-event-probabilities-view");
 
@@ -62,7 +67,6 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
         riskEventsGrid.addThemeName("wrap-cell-content");
         riskEventsGrid.getStyle().set("margin-bottom", "2em");
         riskEventsGrid.setHeight("750px");
-
 
         riskEventsGrid.addEditColumn(RiskEvent::getRiskType)
                 .select(RiskEvent::setRiskType, RiskType.class)
@@ -73,6 +77,11 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
                 .setSortProperty("name")
                 .setFlexGrow(10)
                 .setHeader("Назва події");
+        riskEventsGrid.addEditColumn(RiskEvent::getBudget, new NumberRenderer<>(RiskEvent::getBudget, "%(.2f тис. грн.", Locale.US))
+                .text((item, newValue) -> item.setBudget(BigDecimal.valueOf(Double.parseDouble(newValue))))
+                .setSortProperty("budget")
+                .setTextAlign(ColumnTextAlign.CENTER)
+                .setHeader("Вартість реалізації");
 
         List<Column<RiskEvent>> evaluationColumns = new ArrayList<>(EVALUATIONS_COUNT);
         List<Column<RiskEvent>> weightedEvaluationColumns = new ArrayList<>(EVALUATIONS_COUNT);
@@ -80,10 +89,10 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
         for (int i = 0; i < EVALUATIONS_COUNT; i++) {
             final int index = i;
             Column<RiskEvent> column = riskEventsGrid.addEditColumn(
-                    riskEvent -> riskEvent.getProbabilityEvaluations().get(index).getValue(),
-                    new NumberRenderer<>(riskEvent -> riskEvent.getProbabilityEvaluations().get(index).getValue(), "%(.2f", Locale.US)
+                    riskEvent -> riskEvent.getLossEvaluations().get(index).getValue(),
+                    new NumberRenderer<>(riskEvent -> riskEvent.getLossEvaluations().get(index).getValue(), "%(.2f", Locale.US)
             )
-                    .text((item, newValue) -> item.getProbabilityEvaluations().get(index).setValue(Double.parseDouble(newValue)))
+                    .text((item, newValue) -> item.getLossEvaluations().get(index).setValue(Double.parseDouble(newValue)))
                     .setTextAlign(ColumnTextAlign.CENTER)
                     .setAutoWidth(true)
                     .setHeader(String.format("Е-%d", index + 1));
@@ -93,7 +102,7 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
 
         for (int i = 0; i < EVALUATIONS_COUNT; i++) {
             final int index = i;
-            Column<RiskEvent> column = riskEventsGrid.addColumn(new NumberRenderer<>(riskEvent -> riskEvent.getProbabilityEvaluations().get(index).getWeightedValue(), "%(.2f", Locale.US))
+            Column<RiskEvent> column = riskEventsGrid.addColumn(new NumberRenderer<>(riskEvent -> riskEvent.getLossEvaluations().get(index).getWeightedValue(), "%(.2f", Locale.US))
                     .setTextAlign(ColumnTextAlign.CENTER)
                     .setAutoWidth(true)
                     .setHeader(String.format("Е-%d", index + 1));
@@ -105,18 +114,25 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
         headerRow.join(evaluationColumns.toArray(Column[]::new)).setText("Оцінки експертів");
         headerRow.join(weightedEvaluationColumns.toArray(Column[]::new)).setText("Оцінки експертів з урахуванням їх вагомості");
 
-        riskEventsGrid.addColumn(new NumberRenderer<>(RiskEvent::getWeightedRiskProbability, "%(.2f", Locale.US))
+        riskEventsGrid.addColumn(new NumberRenderer<>(RiskEvent::getWeightedRiskLoss, "%(.2f", Locale.US))
                 .setTextAlign(ColumnTextAlign.CENTER)
-                .setHeader("Зважена ймовірність");
+                .setHeader("Можливі збитки");
 
-        riskEventsGrid.addColumn(riskEvent -> ProbabilityBracket.getBracket(riskEvent.getWeightedRiskProbability()))
-                .setClassNameGenerator(riskEvent -> ProbabilityBracket.getBracket(riskEvent.getWeightedRiskProbability()).name().toLowerCase())
+        riskEventsGrid.addColumn(new NumberRenderer<>(RiskEvent::getBudgetLoss, "%(.2f тис. грн.", Locale.US))
                 .setTextAlign(ColumnTextAlign.CENTER)
-                .setHeader("Ймовірність виникнення");
+                .setHeader("Величина ризику");
 
-        riskEventsGrid.addItemPropertyChangedListener(event -> riskEventService.save(event.getItem()));
+        riskEventsGrid.addColumn(riskEvent -> PriorityBracket.getBracket(riskEvent, riskEventService.findAll()))
+                .setClassNameGenerator(riskEvent -> PriorityBracket.getBracket(riskEvent, riskEventService.findAll()).name().toLowerCase())
+                .setTextAlign(ColumnTextAlign.CENTER)
+                .setHeader("Рівень пріоритету");
 
-        add(new H1("Етап 2.1. Визначення ймовірності настання ризикових подій"));
+        riskEventsGrid.addItemPropertyChangedListener(event -> {
+            riskEventService.save(event.getItem());
+            riskEventsGrid.getDataProvider().refreshAll();
+        });
+
+        add(new H1("Етап 2.2. Визначення можливих збитків від ризику і визначення величини ризику"));
         add(riskEventsGrid);
     }
 }
