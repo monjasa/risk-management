@@ -5,9 +5,7 @@ import com.vaadin.flow.component.grid.Grid.Column;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.gridpro.GridPro;
 import com.vaadin.flow.component.html.H1;
-import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -17,13 +15,11 @@ import org.monjasa.application.model.bracket.ProbabilityBracket;
 import org.monjasa.application.service.RiskEventService;
 import org.monjasa.application.views.MainView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 
 import javax.annotation.PostConstruct;
-import java.util.*;
-
-import static com.vaadin.flow.data.provider.SortDirection.ASCENDING;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 @Route(value = "risk-event-probabilities", layout = MainView.class)
 @PageTitle("Ймовірності настання ризикових подій")
@@ -38,19 +34,7 @@ public class RiskEventProbabilitiesView extends VerticalLayout {
 
     @PostConstruct
     public void initializeDataProvider() {
-        riskEventsGrid.setDataProvider(DataProvider.fromCallbacks(
-                query -> {
-                    Optional<Sort> sort = query.getSortOrders().stream()
-                            .map(queryOrder -> Sort.by(queryOrder.getDirection() == ASCENDING ? Direction.ASC : Direction.DESC, queryOrder.getSorted()))
-                            .findFirst();
-
-                    int offset = query.getOffset();
-                    int limit = query.getLimit();
-
-                    List<RiskEvent> riskEvents = sort.isPresent() ? riskEventService.findAssessed(sort.get()) : riskEventService.findAssessed();
-                    return riskEvents.stream();
-                }, query -> Math.toIntExact(riskEventService.countByPredicate(RiskEvent::isAssessed)))
-        );
+        riskEventsGrid.setDataProvider(riskEventService.getDataProviderFromCallbacks());
     }
 
     public RiskEventProbabilitiesView() {

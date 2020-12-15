@@ -7,7 +7,6 @@ import com.vaadin.flow.component.gridpro.GridPro;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.data.renderer.TextRenderer;
 import com.vaadin.flow.router.PageTitle;
@@ -17,16 +16,10 @@ import org.monjasa.application.model.RiskType;
 import org.monjasa.application.service.RiskEventService;
 import org.monjasa.application.views.MainView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 
 import javax.annotation.PostConstruct;
 import java.text.NumberFormat;
-import java.util.List;
 import java.util.Locale;
-import java.util.Optional;
-
-import static com.vaadin.flow.data.provider.SortDirection.ASCENDING;
 
 @Route(value = "risk-events", layout = MainView.class)
 @PageTitle("Потенційні ризикові події")
@@ -41,19 +34,7 @@ public class RiskEventsView extends VerticalLayout {
     @PostConstruct
     public void initializeDataProvider() {
 
-        riskEventsGrid.setDataProvider(DataProvider.fromCallbacks(
-                query -> {
-                    Optional<Sort> sort = query.getSortOrders().stream()
-                            .map(queryOrder -> Sort.by(queryOrder.getDirection() == ASCENDING ? Direction.ASC : Direction.DESC, queryOrder.getSorted()))
-                            .findFirst();
-
-                    int offset = query.getOffset();
-                    int limit = query.getLimit();
-
-                    List<RiskEvent> riskEvents = sort.isPresent() ? riskEventService.findAll(sort.get()) : riskEventService.findAll();
-                    return riskEvents.stream();
-                }, query -> Math.toIntExact(riskEventService.countAll()))
-        );
+        riskEventsGrid.setDataProvider(riskEventService.getDataProviderFromCallbacks());
 
         NumberFormat percentInstance = NumberFormat.getPercentInstance(Locale.ENGLISH);
         percentInstance.setMaximumFractionDigits(2);

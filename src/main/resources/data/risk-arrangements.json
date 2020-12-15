@@ -1,0 +1,78 @@
+[
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Попереднє навчання членів проектного колективу"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Узгодження детального переліку вимог до ПЗ із замовником"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Внесення узгодженого переліку вимог до ПЗ замовника в договір"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Точне слідування вимогам замовника з узгодженого переліку вимог до ПЗ"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Попередні дослідження ринку"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Експертна оцінка програмного проекту досвідченим стороннім консультантом"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Консультації досвідченого стороннього консультанта"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Тренінг з вивчення необхідних інструментів розроблення ПЗ"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Укладання договору страхування"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Використання \"шаблонних\" рішень з вдалих попередніх проектів при управлінні програмним проектом"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Підготовка документів, які показують важливість даного проекту для досягнення фінансових цілей компанії-розробника"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Реорганізація роботи проектного колективу так, щоб обов'язки та робота членів колективу перекривали один одного"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Придбання (замовлення) частини компонент розроблюваного ПЗ"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Заміна потенційно дефектних компонент розроблюваного ПЗ придбаними компонентами, які гарантують якість виконання роботи"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Придбання більш продуктивної бази даних"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Використання генератора програмного коду"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Реорганізація роботи проектного колективу залежно від рівня труднощів виконання завдань та професійних рівнів розробників"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Повторне використання придатних компонент ПЗ, які були розроблені для інших програмних проектів"
+  },
+  {
+    "_class": "org.monjasa.application.model.Arrangement",
+    "name": "Аналіз доцільності розроблення даного ПЗ"
+  }
+]

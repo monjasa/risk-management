@@ -7,28 +7,20 @@ import com.vaadin.flow.component.gridpro.GridPro;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.data.renderer.TextRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
-import org.monjasa.application.model.RiskEvent;
 import org.monjasa.application.model.RiskSource;
 import org.monjasa.application.model.RiskType;
 import org.monjasa.application.service.RiskSourceService;
 import org.monjasa.application.views.MainView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 
 import javax.annotation.PostConstruct;
 import java.text.NumberFormat;
-import java.util.List;
 import java.util.Locale;
-import java.util.Optional;
-
-import static com.vaadin.flow.data.provider.SortDirection.ASCENDING;
 
 @Route(value = "risk-sources", layout = MainView.class)
 @PageTitle("Джерела появи ризиків")
@@ -46,19 +38,7 @@ public class RiskSourcesView extends VerticalLayout {
     @PostConstruct
     public void initializeDataProvider() {
 
-        riskSourcesGrid.setDataProvider(DataProvider.fromCallbacks(
-                query -> {
-                    Optional<Sort> sort = query.getSortOrders().stream()
-                            .map(queryOrder -> Sort.by(queryOrder.getDirection() == ASCENDING ? Direction.ASC : Direction.DESC, queryOrder.getSorted()))
-                            .findFirst();
-
-                    int offset = query.getOffset();
-                    int limit = query.getLimit();
-
-                    List<RiskSource> riskSources = sort.isPresent() ? riskSourceService.findAll(sort.get()) : riskSourceService.findAll();
-                    return riskSources.stream();
-                }, query -> Math.toIntExact(riskSourceService.countAll()))
-        );
+        riskSourcesGrid.setDataProvider(riskSourceService.getDataProviderFromCallbacks());
 
         long riskSourcesCount = riskSourceService.countAll();
 

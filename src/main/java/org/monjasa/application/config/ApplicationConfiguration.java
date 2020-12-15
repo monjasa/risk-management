@@ -6,17 +6,22 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.repository.init.Jackson2RepositoryPopulatorFactoryBean;
 
+import java.util.List;
+
 @Configuration
 public class ApplicationConfiguration {
 
     @Bean
     public Jackson2RepositoryPopulatorFactoryBean repositoryPopulator() {
 
-        Resource riskSourceResource = new ClassPathResource("data/risk-sources.json");
-        Resource riskEventsResource = new ClassPathResource("data/risk-events.json");
+        List<ClassPathResource> classPathResources = List.of(
+                new ClassPathResource("data/risk-sources.json"),
+                new ClassPathResource("data/risk-events.json"),
+                new ClassPathResource("data/risk-arrangements.json")
+        );
 
         Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
-        factory.setResources(new Resource[] { riskSourceResource, riskEventsResource });
+        factory.setResources(classPathResources.toArray(Resource[]::new));
 
         return factory;
     }
