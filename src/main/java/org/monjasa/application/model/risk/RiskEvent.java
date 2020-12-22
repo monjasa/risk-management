@@ -1,12 +1,12 @@
-package org.monjasa.application.model;
+package org.monjasa.application.model.risk;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.monjasa.application.model.Evaluation;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

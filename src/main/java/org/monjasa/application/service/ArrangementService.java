@@ -1,6 +1,6 @@
 package org.monjasa.application.service;
 
-import org.monjasa.application.model.Arrangement;
+import org.monjasa.application.model.risk.Arrangement;
 
 import java.util.List;
 

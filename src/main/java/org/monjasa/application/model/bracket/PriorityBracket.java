@@ -1,7 +1,7 @@
 package org.monjasa.application.model.bracket;
 
 import lombok.RequiredArgsConstructor;
-import org.monjasa.application.model.RiskEvent;
+import org.monjasa.application.model.risk.RiskEvent;
 
 import java.math.BigDecimal;
 import java.util.DoubleSummaryStatistics;

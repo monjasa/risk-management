@@ -1,4 +1,4 @@
-package org.monjasa.application.model;
+package org.monjasa.application.model.risk;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.RequiredArgsConstructor;

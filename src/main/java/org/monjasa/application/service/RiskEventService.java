@@ -1,8 +1,8 @@
 package org.monjasa.application.service;
 
 import com.vaadin.flow.data.provider.DataProvider;
-import org.monjasa.application.model.RiskEvent;
-import org.monjasa.application.model.RiskType;
+import org.monjasa.application.model.risk.RiskEvent;
+import org.monjasa.application.model.risk.RiskType;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 

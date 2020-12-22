@@ -1,4 +1,4 @@
-package org.monjasa.application.views.pages;
+package org.monjasa.application.views.pages.risk;
 
 import com.vaadin.flow.component.grid.FooterRow;
 import com.vaadin.flow.component.grid.Grid;
@@ -11,8 +11,8 @@ import com.vaadin.flow.data.renderer.NumberRenderer;
 import com.vaadin.flow.data.renderer.TextRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import org.monjasa.application.model.RiskEvent;
-import org.monjasa.application.model.RiskType;
+import org.monjasa.application.model.risk.RiskEvent;
+import org.monjasa.application.model.risk.RiskType;
 import org.monjasa.application.service.RiskEventService;
 import org.monjasa.application.views.MainView;
 import org.springframework.beans.factory.annotation.Autowired;

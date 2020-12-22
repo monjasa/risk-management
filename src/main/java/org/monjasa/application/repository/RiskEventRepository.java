@@ -1,7 +1,7 @@
 package org.monjasa.application.repository;
 
-import org.monjasa.application.model.RiskEvent;
-import org.monjasa.application.model.RiskType;
+import org.monjasa.application.model.risk.RiskEvent;
+import org.monjasa.application.model.risk.RiskType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

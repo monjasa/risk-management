@@ -1,7 +1,7 @@
 package org.monjasa.application.service;
 
 import lombok.RequiredArgsConstructor;
-import org.monjasa.application.model.Arrangement;
+import org.monjasa.application.model.risk.Arrangement;
 import org.monjasa.application.repository.ArrangementRepository;
 import org.springframework.stereotype.Service;
 

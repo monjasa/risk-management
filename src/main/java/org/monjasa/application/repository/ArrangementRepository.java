@@ -1,6 +1,6 @@
 package org.monjasa.application.repository;
 
-import org.monjasa.application.model.Arrangement;
+import org.monjasa.application.model.risk.Arrangement;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

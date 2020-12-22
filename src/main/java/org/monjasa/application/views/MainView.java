@@ -2,7 +2,6 @@ package org.monjasa.application.views;
 
 import java.util.Optional;
 
-import org.monjasa.application.views.pages.*;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -20,13 +19,15 @@ import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.PWA;
+import org.monjasa.application.views.pages.risk.*;
 
 @JsModule("./styles/shared-styles.js")
 @CssImport("./styles/views/main/main-view.css")
 @PWA(name = "Risk Management", shortName = "Risk Management", enableInstallPrompt = false)
 public class MainView extends AppLayout {
 
-    private Tabs menu;
+    private final Tabs menu;
+
     private H1 viewTitle;
 
     public MainView() {

@@ -1,8 +1,8 @@
 package org.monjasa.application.service;
 
 import lombok.RequiredArgsConstructor;
-import org.monjasa.application.model.RiskEvent;
-import org.monjasa.application.model.RiskType;
+import org.monjasa.application.model.risk.RiskEvent;
+import org.monjasa.application.model.risk.RiskType;
 import org.monjasa.application.repository.RiskEventRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

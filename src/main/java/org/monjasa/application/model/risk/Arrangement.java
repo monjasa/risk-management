@@ -1,4 +1,4 @@
-package org.monjasa.application.model;
+package org.monjasa.application.model.risk;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,14 +14,17 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class RiskSource {
+public class Arrangement {
 
     @Id
     @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
 
-    private RiskType riskType;
     private String name;
-    private boolean assessed;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
