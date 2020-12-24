@@ -1,0 +1,230 @@
+[
+  {
+    "_class": "org.monjasa.application.model.quality.Expert",
+    "expertType": "Експерт галузі",
+    "weight": 7,
+    "attributeEvaluations": {
+      "Точність управління та обчислень": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 1.0,
+        "weight": 8
+      },
+      "Ступінь стандартності інтерфейсів": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.9,
+        "weight": 4
+      },
+      "Функціональна повнота": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.9,
+        "weight": 10
+      },
+      "Стійкість до помилок": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.6,
+        "weight": 6
+      },
+      "Можливість розширення": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.7,
+        "weight": 4
+      },
+      "Зручність роботи": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.9,
+        "weight": 9
+      },
+      "Простота роботи": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 1.0,
+        "weight": 9
+      },
+      "Відповідність чинним стандартам": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.6,
+        "weight": 5
+      },
+      "Переносимість між ПЗ": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.9,
+        "weight": 8
+      },
+      "Зручність навчання": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.6,
+        "weight": 7
+      }
+    }
+  },
+  {
+    "_class": "org.monjasa.application.model.quality.Expert",
+    "expertType": "Експерт зручності користування",
+    "weight": 8,
+    "attributeEvaluations": {
+      "Точність управління та обчислень": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.9,
+        "weight": 5
+      },
+      "Ступінь стандартності інтерфейсів": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.8,
+        "weight": 9
+      },
+      "Функціональна повнота": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.7,
+        "weight": 6
+      },
+      "Стійкість до помилок": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.5,
+        "weight": 5
+      },
+      "Можливість розширення": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.5,
+        "weight": 5
+      },
+      "Зручність роботи": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.7,
+        "weight": 9
+      },
+      "Простота роботи": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.9,
+        "weight": 7
+      },
+      "Відповідність чинним стандартам": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.8,
+        "weight": 5
+      },
+      "Переносимість між ПЗ": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.7,
+        "weight": 6
+      },
+      "Зручність навчання": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.5,
+        "weight": 8
+      }
+    }
+  },
+  {
+    "_class": "org.monjasa.application.model.quality.Expert",
+    "expertType": "Експерт з програмування",
+    "weight": 9,
+    "attributeEvaluations": {
+      "Точність управління та обчислень": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 1.0,
+        "weight": 9
+      },
+      "Ступінь стандартності інтерфейсів": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.8,
+        "weight": 6
+      },
+      "Функціональна повнота": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.9,
+        "weight": 9
+      },
+      "Стійкість до помилок": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.8,
+        "weight": 10
+      },
+      "Можливість розширення": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.8,
+        "weight": 10
+      },
+      "Зручність роботи": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.8,
+        "weight": 7
+      },
+      "Простота роботи": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 1.0,
+        "weight": 6
+      },
+      "Відповідність чинним стандартам": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.7,
+        "weight": 10
+      },
+      "Переносимість між ПЗ": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.6,
+        "weight": 9
+      },
+      "Зручність навчання": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.9,
+        "weight": 6
+      }
+    }
+  },
+  {
+    "_class": "org.monjasa.application.model.quality.Expert",
+    "expertType": "Потенційні користувачі",
+    "weight": 5,
+    "attributeEvaluations": {
+      "Точність управління та обчислень": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.805,
+        "weight": 7
+      },
+      "Ступінь стандартності інтерфейсів": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.75,
+        "weight": 5
+      },
+      "Функціональна повнота": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.61,
+        "weight": 6
+      },
+      "Стійкість до помилок": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.77,
+        "weight": 7
+      },
+      "Можливість розширення": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.605,
+        "weight": 4
+      },
+      "Зручність роботи": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.785,
+        "weight": 10
+      },
+      "Простота роботи": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.735,
+        "weight": 10
+      },
+      "Відповідність чинним стандартам": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.555,
+        "weight": 5
+      },
+      "Переносимість між ПЗ": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.785,
+        "weight": 6
+      },
+      "Зручність навчання": {
+        "_class": "org.monjasa.application.model.model.Evaluation",
+        "value": 0.43,
+        "weight": 10
+      }
+    }
+  }
+]

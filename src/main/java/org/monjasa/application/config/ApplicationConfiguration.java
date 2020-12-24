@@ -17,7 +17,8 @@ public class ApplicationConfiguration {
         List<ClassPathResource> classPathResources = List.of(
                 new ClassPathResource("data/risk-sources.json"),
                 new ClassPathResource("data/risk-events.json"),
-                new ClassPathResource("data/risk-arrangements.json")
+                new ClassPathResource("data/risk-arrangements.json"),
+                new ClassPathResource("data/experts.json")
         );
 
         Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();

@@ -45,10 +45,10 @@ public class RiskEvent {
 
     public double getWeightedRiskProbability() {
 
-        int weightSum = probabilityEvaluations.stream()
+        double weightSum = probabilityEvaluations.stream()
                 .map(Evaluation::getWeight)
-                .reduce(Integer::sum)
-                .orElse(1);
+                .reduce(Double::sum)
+                .orElse(1.0);
 
         return probabilityEvaluations.stream()
                 .mapToDouble(Evaluation::getWeightedValue)
@@ -58,10 +58,10 @@ public class RiskEvent {
 
     public double getWeightedRiskLoss() {
 
-        int weightSum = lossEvaluations.stream()
+        double weightSum = lossEvaluations.stream()
                 .map(Evaluation::getWeight)
-                .reduce(Integer::sum)
-                .orElse(1);
+                .reduce(Double::sum)
+                .orElse(1.0);
 
         return lossEvaluations.stream()
                 .mapToDouble(Evaluation::getWeightedValue)

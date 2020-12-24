@@ -22,7 +22,7 @@ public class Evaluation {
     private Long id;
 
     private double value;
-    private int weight;
+    private double weight;
 
     public double getWeightedValue() {
         return weight * value;

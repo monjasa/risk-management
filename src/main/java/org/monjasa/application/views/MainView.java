@@ -19,6 +19,8 @@ import com.vaadin.flow.component.tabs.TabsVariant;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.PWA;
+import org.monjasa.application.views.pages.quality.AttributeEvaluationsView;
+import org.monjasa.application.views.pages.quality.QualityChartsView;
 import org.monjasa.application.views.pages.risk.*;
 
 @JsModule("./styles/shared-styles.js")
@@ -93,7 +95,9 @@ public class MainView extends AppLayout {
                 createTab("Потенційні ризикові події", RiskEventsView.class),
                 createTab("Ймовірність ризикових подій", RiskEventProbabilitiesView.class),
                 createTab("Величина ризиків", RiskEventLossView.class),
-                createTab("Планування ризиків", RiskArrangementsView.class)
+                createTab("Планування ризиків", RiskArrangementsView.class),
+                createTab("Оцінювання якості", AttributeEvaluationsView.class),
+                createTab("Комплексні показники якості", QualityChartsView.class)
         };
     }
 

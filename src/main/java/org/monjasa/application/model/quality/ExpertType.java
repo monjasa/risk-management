@@ -9,7 +9,8 @@ public enum ExpertType {
     INDUSTRIAL("Експерт галузі"),
     USABILITY("Експерт зручності користування"),
     PROGRAMMING("Експерт з програмування"),
-    USERS("Потенційні користувачі");
+    USERS("Потенційні користувачі"),
+    TOTAL("Узагальнені показники експертів");
 
     @JsonValue
     public final String name;
